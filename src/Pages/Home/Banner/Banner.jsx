@@ -3,8 +3,8 @@ import "../../../assets/Css/Common.css";
 
 const Banner = () => {
   return (
-    <div className="hero min-h-screen px-[6%]">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="hero my-16 lg:min-h-screen px-[6%]">
+      <div className="hero-content flex-col-reverse lg:flex-row-reverse">
         <div className="basis-1/2">
           <img src={BannerImg} className="max-w-sm mx-auto rounded-lg" />
         </div>
@@ -14,7 +14,7 @@ const Banner = () => {
           </h1>
           <p className="py-6">
             Learning is very important in this modern era. Your confidence will
-            be increased by giving the exam.
+            be increased, If you sit for an exam. You will learn
           </p>
           <button className="btn btn-primary button-bg text-white">
             Get Started
