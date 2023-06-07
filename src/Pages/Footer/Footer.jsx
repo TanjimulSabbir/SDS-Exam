@@ -84,7 +84,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="basis-1/3 justify-center">
-          <div>
+          <div className="z-0">
             <MapContainer
               center={[51.505, -0.09]}
               zoom={13}
