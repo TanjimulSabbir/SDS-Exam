@@ -8,7 +8,7 @@ const LogIn = () => {
     <div className="hero min-h-screen my-10">
       <div className="hero-content w-[80%] flex-col lg:flex-row justify-between">
         {/* left side  */}
-        <div className="text-center lg:text-left">
+        <div className="text-center mb-10 lg:mb-0 lg:text-left">
           <Lottie animationData={LoginAnimation} loop={true} />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-base-100">
