@@ -21,17 +21,17 @@ import "../../assets/Css/Common.css";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-[#f1f2f6] px-[6%] flex justify-between items-center  p-10  text-base-content">
+      <footer className="footer bg-[#f1f2f6] px-[6%] flex flex-col justify-between items-center lg:flex-row  p-10  text-base-content">
         <div className="basis-1/3">
           {/* logo */}
           <div>
             <img
-              className="w-[220px] h-[220px] object-contain"
+              className="w-[220px] h-[220px] object-contain mx-auto"
               src={Logo}
               alt="logo"
             />
 
-            <p>
+            <p className="text-center lg:text-justify">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
               non ex consequatur facere eius quos, architecto exercitationem
               totam id voluptas?
@@ -103,7 +103,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <footer className="footer px-[6%] py-4 border-t bg-[#f5f6fa] text-base-content border-base-300">
+      <footer className="footer px-[6%] py-4 border-t bg-[#f5f6fa] justify-center md:justify-between text-base-content border-base-300">
         <div className="items-center grid-flow-col">
           <p>Copyright © 2023 - All right reserved</p>
         </div>
