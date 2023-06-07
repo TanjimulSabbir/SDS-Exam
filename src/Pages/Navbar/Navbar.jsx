@@ -1,13 +1,11 @@
 import Nav from "./Navbar.module.css";
 import Logo from "../../assets/Logo/logo.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFacebook,
   faFacebookF,
   faInstagram,
   faLinkedin,
-  faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClock,
   faLocationDot,
