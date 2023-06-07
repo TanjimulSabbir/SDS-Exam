@@ -3,8 +3,13 @@ import Logo from "../../assets/Logo/logo.jpg";
 import "../../assets/Css/Common.css";
 import Lottie from "lottie-react";
 import LoginAnimation from "../../assets/LottieFiles/login.json";
+import { AuthContext } from "../../Context/AuthProvider";
+import { useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const LogIn = () => {
+  const { user, setUser, loading, setLoading } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -13,7 +18,40 @@ const LogIn = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+
+    const { regId: givenId, password: givenPass } = data;
+
+    setLoading(true);
+
+    fetch("http://localhost:5000/employees")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        data?.forEach((employeeInfo) => {
+          const { _id, role, name, regId, password } = employeeInfo;
+
+          if (regId === givenId && password === givenPass) {
+            setUser(employeeInfo);
+            toast("Wow so easy!");
+            <ToastContainer />;
+          } else {
+            console.log("No match");
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    setLoading(false);
   };
+
+  console.log(user);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="hero min-h-screen my-10">
