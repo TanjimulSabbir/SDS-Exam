@@ -15,13 +15,13 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className={`${Nav.container} shadow-md`}>
+    <div className={`${Nav.container} shadow-md `}>
       {/* upper part  */}
       <div
-        className={`${Nav.upper}  flex  md:items-center md:justify-between mb-2`}
+        className={`${Nav.upper} pb-2  flex  md:items-center md:justify-between z-10`}
       >
         <div
-          className={`${Nav.logo} md:basis-1/2 flex justify-center items-center md:justify-start `}
+          className={`${Nav.logo} md:basis-1/2 flex justify-center items-center md:justify-start`}
         >
           <img src={Logo} alt="Logo" />
 
@@ -74,11 +74,12 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
       <hr />
 
       {/* bottom part  */}
 
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 pt-3">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
