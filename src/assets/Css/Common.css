@@ -3,7 +3,8 @@
   width: 300px;
 }
 
-.button-bg {
+.button-bg,
+input[type="submit"] {
   background: #36d1dc; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -19,6 +20,7 @@
   border: none;
 }
 
-.button-bg:hover {
+.button-bg:hover,
+input[type="submit"] {
   background: linear-gradient(to left, #5b86e5, #36d1dc);
 }
