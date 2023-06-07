@@ -43,7 +43,7 @@ const Footer = () => {
             {/* call info  */}
             <div className="flex">
               <div className="mr-2">
-                <FontAwesomeIcon className="text-[#33d9b2]" icon={faPhone} />
+                <FontAwesomeIcon className="text-[#FF735C]" icon={faPhone} />
               </div>
               <div className="flex flex-col">
                 <p className="font-bold text-sm">Call</p>
@@ -56,7 +56,7 @@ const Footer = () => {
             {/* work time info  */}
             <div className="flex ">
               <div className="mr-2">
-                <FontAwesomeIcon className="text-[#33d9b2]" icon={faClock} />
+                <FontAwesomeIcon className="text-[#FF735C]" icon={faClock} />
               </div>
               <div className="flex flex-col">
                 <p className="font-bold text-sm">Work Time</p>
@@ -70,7 +70,7 @@ const Footer = () => {
             <div className="flex">
               <div className="mr-2">
                 <FontAwesomeIcon
-                  className="text-[#33d9b2]"
+                  className="text-[#FF735C]"
                   icon={faLocationDot}
                 />
               </div>
