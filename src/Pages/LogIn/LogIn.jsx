@@ -4,14 +4,18 @@ import "../../assets/Css/Common.css";
 import Lottie from "lottie-react";
 import LoginAnimation from "../../assets/LottieFiles/login.json";
 import { AuthContext } from "../../Context/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const LogIn = () => {
   const { loading, setLoading } = useContext(AuthContext);
 
+  const [passwordInputType, setPasswordInputType] = useState("password");
+
+  // form elements
   const {
     register,
     handleSubmit,
@@ -20,6 +24,7 @@ const LogIn = () => {
 
   const navigate = useNavigate();
 
+  // get submitted form value & log in
   const onSubmit = (data) => {
     console.log(data);
 
@@ -43,13 +48,21 @@ const LogIn = () => {
           }
         });
       })
-      .catch((err) => {
+      .catch(() => {
         toast.error("No match");
       });
 
     setLoading(false);
   };
 
+  // password hide & show functionality
+  const togglePasswordInputType = () => {
+    setPasswordInputType(
+      passwordInputType === "password" ? "text" : "password"
+    );
+  };
+
+  // check loading
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -104,12 +117,25 @@ const LogIn = () => {
                   <span className="label-text font-bold">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={passwordInputType}
                   placeholder="password"
                   className="input input-bordered"
                   {...register("password", { required: true })}
                   aria-invalid={errors.password ? "true" : "false"}
                 />
+
+                {passwordInputType === "password" ? (
+                  <AiFillEye
+                    onClick={togglePasswordInputType}
+                    className="absolute top-[62%] right-2 cursor-pointer"
+                  />
+                ) : (
+                  <AiFillEyeInvisible
+                    onClick={togglePasswordInputType}
+                    className="absolute top-[62%] right-2 cursor-pointer"
+                  />
+                )}
+
                 {errors.regId?.type === "required" && (
                   <p role="alert" className="my-1 text-red-600">
                     password is required

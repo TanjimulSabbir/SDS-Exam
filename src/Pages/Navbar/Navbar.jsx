@@ -12,7 +12,7 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import AvatarImg from "../../assets/Nav/avatar.jpg";
 
