@@ -5,16 +5,20 @@ import Lottie from "lottie-react";
 import LoginAnimation from "../../assets/LottieFiles/login.json";
 import { AuthContext } from "../../Context/AuthProvider";
 import { useContext } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const LogIn = () => {
-  const { user, setUser, loading, setLoading } = useContext(AuthContext);
+  const { loading, setLoading } = useContext(AuthContext);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -29,25 +33,22 @@ const LogIn = () => {
         console.log(data);
 
         data?.forEach((employeeInfo) => {
-          const { _id, role, name, regId, password } = employeeInfo;
+          const { regId, password } = employeeInfo;
+          console.log(employeeInfo);
 
           if (regId === givenId && password === givenPass) {
-            setUser(employeeInfo);
-            toast("Wow so easy!");
-            <ToastContainer />;
-          } else {
-            console.log("No match");
+            localStorage.setItem("Employee-Info", JSON.stringify(employeeInfo));
+            navigate("/");
+            toast.success("LogIn successfully");
           }
         });
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("No match");
       });
 
     setLoading(false);
   };
-
-  console.log(user);
 
   if (loading) {
     return <div>Loading...</div>;

@@ -11,9 +11,23 @@ import {
   faLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../Context/AuthProvider";
+import AvatarImg from "../../assets/Nav/avatar.jpg";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  navigate(0);
+
+  const { employeeInfo, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut();
+    // refresh
+    navigate(0);
+  };
+
   return (
     <div className={`${Nav.container} shadow-md `}>
       {/* upper part  */}
@@ -108,6 +122,14 @@ const Navbar = () => {
               <li>
                 <Link>Certifications</Link>
               </li>
+
+              {/* if employee is logged in then show it  */}
+              {employeeInfo && (
+                <li>
+                  <Link>Dashboard</Link>
+                </li>
+              )}
+
               <li>
                 <Link>About Us</Link>
               </li>
@@ -123,6 +145,14 @@ const Navbar = () => {
               <li>
                 <Link>Certifications</Link>
               </li>
+
+              {/* if employee is logged in then show it  */}
+              {employeeInfo && (
+                <li>
+                  <Link>Dashboard</Link>
+                </li>
+              )}
+
               <li>
                 <Link>About Us</Link>
               </li>
@@ -143,9 +173,30 @@ const Navbar = () => {
               <FontAwesomeIcon icon={faInstagram} />
             </a>
           </div>
-          <Link to="/login" className={`btn text-white ${Nav.gradientBg}`}>
-            LogIn
-          </Link>
+          {employeeInfo ? (
+            <>
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={employeeInfo.name}
+              >
+                <div className="avatar online mr-4 ">
+                  <div className="w-12 rounded-full ">
+                    <img src={AvatarImg} />
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={handleLogOut}
+                className={`btn text-white ${Nav.gradientBg}`}
+              >
+                LogOut
+              </button>
+            </>
+          ) : (
+            <Link to="/login" className={`btn text-white ${Nav.gradientBg}`}>
+              LogIn
+            </Link>
+          )}
         </div>
       </div>
     </div>
