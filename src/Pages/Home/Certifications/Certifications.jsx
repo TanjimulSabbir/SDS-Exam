@@ -1,0 +1,37 @@
+import Trophy from "../../../assets/Certifications/trophy.png";
+import Lottie from "lottie-react";
+import examAnimation from "../../../assets/Certifications/exam.json";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import style from "./Certifications.module.css";
+
+const Certifications = () => {
+  return (
+    <div className={`py-12 ${style.container}`}>
+      <div className="text-center flex flex-col justify-center items-center">
+        <img
+          src={Trophy}
+          alt="trophy image"
+          className="w-[90px] h-[90px] object-contain"
+        />
+        <h1 className="text-4xl uppercase font-bold ">examination</h1>
+      </div>
+
+      {/* animation  */}
+      <div className="w-[80%] h-[500px] mx-auto my-4">
+        <Lottie className="h-full " animationData={examAnimation} loop={true} />
+      </div>
+
+      <div className="text-center">
+        <h1 className="text-3xl font-semibold">Choose subject & attend exam</h1>
+        <p className="text-gray-500 py-3">
+          Select your exam subject and attend the exam
+        </p>
+        <button className={`${style.btn} `}>
+          Certifications <AiOutlineArrowRight className="inline-block" />{" "}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Certifications;

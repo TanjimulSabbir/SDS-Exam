@@ -1,0 +1,22 @@
+.container {
+  background: radial-gradient(
+    circle at 50% 50%,
+    #36b4bc,
+    #5fbfc5,
+    #7ecacf,
+    #9ad4d8,
+    #b4dfe2,
+    #ceeaeb,
+    #e6f4f5,
+    #ffffff
+  );
+}
+
+.btn {
+  background-color: #00adb4;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 35px;
+  border: 0;
+  outline: 0;
+}

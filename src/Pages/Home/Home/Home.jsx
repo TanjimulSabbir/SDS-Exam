@@ -2,6 +2,7 @@ import Banner from "../Banner/Banner";
 import Exam from "../../../assets/Features/banner-image.png";
 import Course from "../../../assets/Features/course.jpg";
 import Question from "../../../assets/Features/question.jpg";
+import Certifications from "../Certifications/Certifications";
 
 const Home = () => {
   return (
@@ -76,6 +77,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* certifications  */}
+      <Certifications />
     </div>
   );
 };
