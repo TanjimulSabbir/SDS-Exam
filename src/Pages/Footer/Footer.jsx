@@ -31,7 +31,7 @@ const Footer = () => {
               alt="logo"
             />
 
-            <p className="text-center lg:text-justify">
+            <p className="text-center lg:text-justify font-poppins text-sm">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
               non ex consequatur facere eius quos, architecto exercitationem
               totam id voluptas?
@@ -46,8 +46,8 @@ const Footer = () => {
                 <FontAwesomeIcon className="text-[#42BEC3]" icon={faPhone} />
               </div>
               <div className="flex flex-col">
-                <p className="font-bold text-sm">Call</p>
-                <span className="text-xs mt-1 text-gray-500">
+                <p className="font-bold text-sm font-roboto">Call</p>
+                <span className="text-xs mt-1 text-gray-500 font-poppins">
                   +44-7689789898
                 </span>
               </div>
@@ -59,8 +59,8 @@ const Footer = () => {
                 <FontAwesomeIcon className="text-[#42BEC3]" icon={faClock} />
               </div>
               <div className="flex flex-col">
-                <p className="font-bold text-sm">Work Time</p>
-                <span className="text-xs mt-1 text-gray-500">
+                <p className="font-bold text-sm font-roboto">Work Time</p>
+                <span className="text-xs mt-1 text-gray-500 font-poppins">
                   Mon-Fri 8AM -5PM
                 </span>
               </div>
@@ -75,8 +75,8 @@ const Footer = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <p className="font-bold text-sm">Address</p>
-                <span className="text-xs mt-1 text-gray-500">
+                <p className="font-bold text-sm font-roboto">Address</p>
+                <span className="text-xs mt-1 text-gray-500 font-poppins">
                   Franklin st. Avenue
                 </span>
               </div>
@@ -105,7 +105,9 @@ const Footer = () => {
       </footer>
       <footer className="footer px-[6%] py-4 border-t bg-[#f5f6fa] justify-center md:justify-between text-base-content border-base-300">
         <div className="items-center grid-flow-col">
-          <p>Copyright © 2023 - All right reserved</p>
+          <p className="font-poppins text-sm">
+            Copyright © 2023 - All right reserved
+          </p>
         </div>
         <div className="md:place-self-center md:justify-self-end">
           <div

@@ -63,8 +63,8 @@ const Navbar = () => {
                 <FontAwesomeIcon className="text-[#42BEC3]" icon={faPhone} />
               </div>
               <div className="flex flex-col">
-                <p className="font-bold text-sm">Call</p>
-                <span className="text-xs mt-1 text-gray-500">
+                <p className="font-bold text-sm font-roboto">Call</p>
+                <span className="text-xs mt-1 text-gray-500 font-poppins">
                   +44-7689789898
                 </span>
               </div>
@@ -76,8 +76,8 @@ const Navbar = () => {
                 <FontAwesomeIcon className="text-[#42BEC3]" icon={faClock} />
               </div>
               <div className="flex flex-col">
-                <p className="font-bold text-sm">Work Time</p>
-                <span className="text-xs mt-1 text-gray-500">
+                <p className="font-bold text-sm font-roboto">Work Time</p>
+                <span className="text-xs mt-1 text-gray-500 font-poppins">
                   Mon-Fri 8AM -5PM
                 </span>
               </div>
@@ -92,8 +92,8 @@ const Navbar = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <p className="font-bold text-sm">Address</p>
-                <span className="text-xs mt-1 text-gray-500">
+                <p className="font-bold text-sm font-roboto">Address</p>
+                <span className="text-xs mt-1 text-gray-500 font-poppins">
                   Franklin st. Avenue
                 </span>
               </div>
