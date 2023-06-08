@@ -141,6 +141,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
+                    to="/certifications"
                     className={
                       pathName === "/certifications" ? "active-link" : ""
                     }
@@ -181,6 +182,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
+                    to="/certifications"
                     className={
                       pathName === "/certifications" ? "active-link" : ""
                     }
