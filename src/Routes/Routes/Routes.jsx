@@ -4,6 +4,7 @@ import Main from "../../Layout/Main";
 import LogIn from "../../Pages/LogIn/LogIn";
 import Home from "../../Pages/Home/Home/Home";
 import Error from "../../Pages/Error/Error";
+import Certification from "../../Pages/Certification/Certification";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <LogIn />,
+      },
+      {
+        path: "/certifications",
+        element: <Certification />,
       },
     ],
   },

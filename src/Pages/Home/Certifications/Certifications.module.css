@@ -1,7 +1,7 @@
 .container {
   background: radial-gradient(
     circle at 50% 50%,
-    #36b4bc,
+    rgba(54, 180, 188, 0.5),
     #5fbfc5,
     #7ecacf,
     #9ad4d8,

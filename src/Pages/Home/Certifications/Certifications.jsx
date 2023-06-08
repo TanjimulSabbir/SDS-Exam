@@ -3,6 +3,7 @@ import Lottie from "lottie-react";
 import examAnimation from "../../../assets/Certifications/exam.json";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import style from "./Certifications.module.css";
+import { Link } from "react-router-dom";
 
 const Certifications = () => {
   return (
@@ -26,9 +27,9 @@ const Certifications = () => {
         <p className="text-gray-500 py-3">
           Select your exam subject and attend the exam
         </p>
-        <button className={`${style.btn} `}>
+        <Link to="/certifications" className={`${style.btn} inline-block`}>
           Certifications <AiOutlineArrowRight className="inline-block" />{" "}
-        </button>
+        </Link>
       </div>
     </div>
   );

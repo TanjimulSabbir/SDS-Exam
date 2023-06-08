@@ -1,0 +1,32 @@
+import { useEffect, useState } from "react";
+import IndividualCertification from "./IndividualCertification";
+
+const Certification = () => {
+  const [courses, setCourses] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/certifications")
+      .then((res) => res.json())
+      .then((data) => setCourses(data))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  return (
+    <div className="py-10 px-[6%]">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">Certifications</h1>
+        <p className="text-gray-400">Select your exam subject</p>
+      </div>
+
+      {/* certifications  */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-16">
+        {courses?.map((course) => (
+          <IndividualCertification key={course.courseId} course={course} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Certification;
