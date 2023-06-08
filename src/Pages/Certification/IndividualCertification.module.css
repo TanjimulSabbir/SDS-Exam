@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
+
 .overlay {
   position: fixed;
   top: 0;
@@ -28,6 +30,8 @@
 .content h1 {
   position: relative;
   margin-bottom: 30px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 700;
 }
 
 .content h1::after {
@@ -36,7 +40,7 @@
   width: 8%;
   height: 4px;
   background-color: rgba(26, 188, 156, 1);
-  bottom: -8px;
+  bottom: -10px;
   left: 46%;
 }
 
@@ -50,6 +54,13 @@
   left: 0;
 }
 
+.content p {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 18px;
+}
+
 .orderList li {
+  font-family: "Roboto Condensed", sans-serif;
   margin: 5px 0;
+  font-size: 18px;
 }

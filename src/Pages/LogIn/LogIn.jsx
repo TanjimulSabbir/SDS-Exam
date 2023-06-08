@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import Logo from "../../assets/Logo/logo.jpg";
-import "../../assets/Css/Common.css";
+import "../../Common/Css/Common.css";
 import Lottie from "lottie-react";
 import LoginAnimation from "../../assets/LottieFiles/login.json";
 import { AuthContext } from "../../Context/AuthProvider";

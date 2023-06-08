@@ -1,5 +1,5 @@
 import BannerImg from "../../../assets/Banner/banner-img.jpg";
-import "../../../assets/Css/Common.css";
+import "../../../Common/Css/Common.css";
 
 const Banner = () => {
   return (
@@ -12,15 +12,15 @@ const Banner = () => {
           <img src={BannerImg} className=" md:max-w-sm md:mx-auto rounded-lg" />
         </div>
         <div className="basis-1/2">
-          <h1 className="text-3xl md:text-5xl font-bold">
+          <h1 className="text-3xl md:text-5xl font-bold font-roboto">
             The Smarter Way to Learn{" "}
             <span className="text-[#42BEC3] underline">Anything</span>
           </h1>
-          <p className="py-8">
+          <p className="py-8 font-poppins text-sm">
             Learning is very important in this modern era. Your confidence will
             be increased, If you sit for an exam. You can judge yourself.
           </p>
-          <button className="btn hover:bg-[#42BEC3] bg-[#42BEC3] border-0 text-white">
+          <button className="btn hover:bg-[#42BEC3] bg-[#42BEC3] border-0 text-white font-roboto">
             Get Started
           </button>
         </div>

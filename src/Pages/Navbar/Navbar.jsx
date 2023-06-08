@@ -42,8 +42,12 @@ const Navbar = () => {
 
             {/* company name  */}
             <div className="flex flex-col ml-2">
-              <p className={`font-bold text-2xl ${Nav.highlight}`}>SDS</p>
-              <span className="text-sm text-gray-400">Consultancy Service</span>
+              <p className={`font-bold text-2xl font-roboto ${Nav.highlight}`}>
+                SDS
+              </p>
+              <span className="text-sm text-gray-400 font-poppins">
+                Consultancy Service
+              </span>
             </div>
           </div>
 
@@ -120,7 +124,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 font-roboto"
               >
                 <li>
                   <Link to="/">Home</Link>
@@ -144,7 +148,7 @@ const Navbar = () => {
             {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
 
             <div className="hidden lg:flex">
-              <ul className="menu menu-horizontal px-1 text-base font-semibold">
+              <ul className="menu menu-horizontal px-1 text-base font-semibold font-roboto">
                 <li>
                   <Link to="/">Home</Link>
                 </li>

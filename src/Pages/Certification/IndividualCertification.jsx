@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import RuleImage from "../../assets/Certifications/rule.png";
 import style from "./individualCertification.module.css";
 
 const IndividualCertification = ({ course }) => {
-  const { courseId, courseName, courseImg, courseInfo, courseDesc } = course;
+  const { courseId, courseName, courseImg, courseDesc } = course;
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -23,7 +24,9 @@ const IndividualCertification = ({ course }) => {
       </figure>
       <div className="card-body">
         <div className="flex justify-between">
-          <h2 className="card-title font-bold text-2xl">{courseName}</h2>
+          <h2 className="card-title font-bold text-2xl font-roboto">
+            {courseName}
+          </h2>
 
           {/* rule modal  */}
           <button onClick={toggleModal}>
@@ -36,7 +39,7 @@ const IndividualCertification = ({ course }) => {
               <div className={`${style.overlay}`}>
                 <div className={`${style.content}`}>
                   {/* course image  */}
-                  <div className="w-[50%] mx-auto">
+                  <div className="mb-10 sm:w-[50%] sm:mx-auto">
                     <img
                       src={courseImg}
                       alt="course image"
@@ -45,7 +48,9 @@ const IndividualCertification = ({ course }) => {
                   </div>
 
                   {/* course name  */}
-                  <h1 className="text-3xl font-bold my-4">{courseName}</h1>
+                  <h1 className="text-3xl font-bold my-4">
+                    {courseName} Certification Exam
+                  </h1>
 
                   {/* course description  */}
                   <h2 className="font-bold text-start text-2xl mb-3">
@@ -81,9 +86,15 @@ const IndividualCertification = ({ course }) => {
             </div>
           )}
         </div>
-        <p>{courseDesc.split(".")[0]}</p>
+
+        <p className="font-poppins text-sm text-justify">
+          {courseDesc.split(".")[0]}
+        </p>
+
         <div className="card-actions justify-end">
-          <button className="btn bg-[#1abc9c] rounded-3x">Give Exam</button>
+          <Link to="#" className="btn bg-[#1abc9c] rounded-3x">
+            Give Exam
+          </Link>
         </div>
       </div>
     </div>

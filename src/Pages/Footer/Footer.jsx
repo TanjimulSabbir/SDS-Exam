@@ -16,7 +16,7 @@ import {
 
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import "../../assets/Css/Common.css";
+import "../../Common/Css/Common.css";
 
 const Footer = () => {
   return (
