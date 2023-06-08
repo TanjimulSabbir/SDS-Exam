@@ -1,7 +1,38 @@
+import { useContext } from "react";
 import Navbar from "../Pages/Navbar/Navbar";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
 
 const DashboardLayout = () => {
+  const { employeeInfo } = useContext(AuthContext);
+
+  let menus;
+
+  if (employeeInfo?.role === "admin") {
+    menus = (
+      <>
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+        <li>
+          <a>Add Employee</a>
+        </li>
+        <li>
+          <a>Employees</a>
+        </li>
+      </>
+    );
+  } else if (employeeInfo?.role === "employee") {
+    <>
+      <li>
+        <a>Sidebar Item 1</a>
+      </li>
+      <li>
+        <a>Sidebar Item 2</a>
+      </li>
+    </>;
+  }
+
   return (
     <>
       {/* navbar  */}
@@ -25,12 +56,7 @@ const DashboardLayout = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-            <li>
-              <a>Sidebar Item 1</a>
-            </li>
-            <li>
-              <a>Sidebar Item 2</a>
-            </li>
+            {menus}
           </ul>
         </div>
       </div>
