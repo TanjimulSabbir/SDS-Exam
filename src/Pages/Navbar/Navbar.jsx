@@ -155,7 +155,9 @@ const Navbar = () => {
                   <li>
                     <Link
                       to="/dashboard"
-                      className={pathName === "/dashboard" ? "active-link" : ""}
+                      className={
+                        pathName.includes("/dashboard") ? "active-link" : ""
+                      }
                     >
                       Dashboard
                     </Link>
@@ -197,7 +199,9 @@ const Navbar = () => {
                   <li>
                     <Link
                       to="/dashboard"
-                      className={pathName === "/dashboard" ? "active-link" : ""}
+                      className={
+                        pathName.includes("/dashboard") ? "active-link" : ""
+                      }
                     >
                       Dashboard
                     </Link>

@@ -9,6 +9,7 @@ import style from "../Layout/DashboardLayout.module.css";
 
 const DashboardLayout = () => {
   const { employeeInfo } = useContext(AuthContext);
+  console.log(employeeInfo);
 
   //   get pathname to highlight active menu
   const pathName = useLocation().pathname;
@@ -27,14 +28,24 @@ const DashboardLayout = () => {
           </Link>
         </li>
         <li>
-          <Link>
+          <Link
+            to="/dashboard/profile"
+            className={
+              pathName === "/dashboard/profile" ? `${style.activeMenu}` : ""
+            }
+          >
             {" "}
             <AiFillProfile />
             Profile
           </Link>
         </li>
         <li>
-          <Link>
+          <Link
+            to="/dashboard/addEmployee"
+            className={
+              pathName === "/dashboard/addEmployee" ? `${style.activeMenu}` : ""
+            }
+          >
             {" "}
             <BsPersonFillAdd /> Add Employee
           </Link>
@@ -47,14 +58,20 @@ const DashboardLayout = () => {
       </>
     );
   } else if (employeeInfo?.role === "employee") {
-    <>
-      <li>
-        <a>Sidebar Item 1</a>
-      </li>
-      <li>
-        <a>Sidebar Item 2</a>
-      </li>
-    </>;
+    menus = (
+      <>
+        <li>
+          <Link
+            className={pathName === "/dashboard" ? `${style.activeMenu}` : ""}
+          >
+            Dashboard
+          </Link>
+        </li>
+        <li>
+          <Link>Result</Link>
+        </li>
+      </>
+    );
   }
 
   return (
@@ -65,7 +82,7 @@ const DashboardLayout = () => {
       {/* drawer */}
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content">
           {/* Page content here */}
 
           <Outlet />
