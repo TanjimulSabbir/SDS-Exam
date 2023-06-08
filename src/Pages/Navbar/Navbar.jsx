@@ -154,6 +154,7 @@ const Navbar = () => {
                 {employeeInfo && (
                   <li>
                     <Link
+                      to="/dashboard"
                       className={pathName === "/dashboard" ? "active-link" : ""}
                     >
                       Dashboard
@@ -195,6 +196,7 @@ const Navbar = () => {
                 {employeeInfo && (
                   <li>
                     <Link
+                      to="/dashboard"
                       className={pathName === "/dashboard" ? "active-link" : ""}
                     >
                       Dashboard

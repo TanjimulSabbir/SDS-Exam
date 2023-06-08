@@ -7,6 +7,7 @@ import Certification from "../../Pages/Certification/Certification";
 import MainLayout from "../../Layout/MainLayout";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import DashboardLayout from "../../Layout/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     errorElement: <Error />,
+    element: <DashboardLayout />,
     children: [
       {
         path: "/dashboard",
