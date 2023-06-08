@@ -7,7 +7,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const LogIn = () => {
@@ -23,6 +23,9 @@ const LogIn = () => {
   } = useForm();
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.from?.state?.pathname || "/";
 
   // get submitted form value & log in
   const onSubmit = (data) => {
@@ -43,7 +46,7 @@ const LogIn = () => {
 
           if (regId === givenId && password === givenPass) {
             localStorage.setItem("Employee-Info", JSON.stringify(employeeInfo));
-            navigate("/");
+            navigate(from, { replace: true });
             toast.success("LogIn successfully");
           }
         });

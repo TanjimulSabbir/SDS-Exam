@@ -5,6 +5,8 @@ import Home from "../../Pages/Home/Home/Home";
 import Error from "../../Pages/Error/Error";
 import Certification from "../../Pages/Certification/Certification";
 import MainLayout from "../../Layout/MainLayout";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,20 @@ export const router = createBrowserRouter([
       {
         path: "/certifications",
         element: <Certification />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
       },
     ],
   },
