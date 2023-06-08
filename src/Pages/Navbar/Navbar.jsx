@@ -11,13 +11,18 @@ import {
   faLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import AvatarImg from "../../assets/Nav/avatar.jpg";
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  const pathName = useLocation().pathname;
+  console.log(pathName);
+
+  // refresh
   navigate(0);
 
   const { employeeInfo, logOut } = useContext(AuthContext);
@@ -124,24 +129,41 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 font-roboto"
+                className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box w-52 font-roboto"
               >
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link
+                    to="/"
+                    className={pathName === "/" ? "active-link" : ""}
+                  >
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link>Certifications</Link>
+                  <Link
+                    className={
+                      pathName === "/certifications" ? "active-link" : ""
+                    }
+                  >
+                    Certifications
+                  </Link>
                 </li>
 
                 {/* if employee is logged in then show it  */}
                 {employeeInfo && (
                   <li>
-                    <Link>Dashboard</Link>
+                    <Link
+                      className={pathName === "/dashboard" ? "active-link" : ""}
+                    >
+                      Dashboard
+                    </Link>
                   </li>
                 )}
 
                 <li>
-                  <Link>About Us</Link>
+                  <Link className={pathName === "/about" ? "active-link" : ""}>
+                    About Us
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -150,21 +172,38 @@ const Navbar = () => {
             <div className="hidden lg:flex">
               <ul className="menu menu-horizontal px-1 text-base font-semibold font-roboto">
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link
+                    to="/"
+                    className={pathName === "/" ? "active-link" : ""}
+                  >
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link>Certifications</Link>
+                  <Link
+                    className={
+                      pathName === "/certifications" ? "active-link" : ""
+                    }
+                  >
+                    Certifications
+                  </Link>
                 </li>
 
                 {/* if employee is logged in then show it  */}
                 {employeeInfo && (
                   <li>
-                    <Link>Dashboard</Link>
+                    <Link
+                      className={pathName === "/dashboard" ? "active-link" : ""}
+                    >
+                      Dashboard
+                    </Link>
                   </li>
                 )}
 
                 <li>
-                  <Link>About Us</Link>
+                  <Link className={pathName === "/about" ? "active-link" : ""}>
+                    About Us
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -197,13 +236,16 @@ const Navbar = () => {
                 </div>
                 <button
                   onClick={handleLogOut}
-                  className={`btn text-white ${Nav.gradientBg}`}
+                  className={`btn text-white font-roboto ${Nav.gradientBg}`}
                 >
                   LogOut
                 </button>
               </>
             ) : (
-              <Link to="/login" className={`btn text-white ${Nav.gradientBg}`}>
+              <Link
+                to="/login"
+                className={`btn text-white font-roboto ${Nav.gradientBg}`}
+              >
                 LogIn
               </Link>
             )}

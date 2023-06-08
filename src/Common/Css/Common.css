@@ -8,6 +8,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+.active-link {
+  background-color: #36d1dc;
+}
+
 .leaflet-container {
   height: 300px;
   width: 300px;

@@ -16,7 +16,7 @@ const Banner = () => {
             The Smarter Way to Learn{" "}
             <span className="text-[#42BEC3] underline">Anything</span>
           </h1>
-          <p className="py-8 font-poppins text-sm">
+          <p className="py-6 font-poppins text-sm">
             Learning is very important in this modern era. Your confidence will
             be increased, If you sit for an exam. You can judge yourself.
           </p>
