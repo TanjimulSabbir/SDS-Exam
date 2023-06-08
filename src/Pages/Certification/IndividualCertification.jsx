@@ -40,24 +40,24 @@ const IndividualCertification = ({ course }) => {
                     <img
                       src={courseImg}
                       alt="course image"
-                      className="w-full object-cover"
+                      className="w-full object-cover rounded-lg"
                     />
                   </div>
 
                   {/* course name  */}
-                  <h1 className="text-3xl font-bold my-4">
-                    Topic: {courseName}
-                  </h1>
+                  <h1 className="text-3xl font-bold my-4">{courseName}</h1>
 
                   {/* course description  */}
-                  <p className="font-bold text-start text-2xl mb-3">
+                  <h2 className="font-bold text-start text-2xl mb-3">
                     Description:
-                  </p>
+                  </h2>
                   <p className="text-start">{courseDesc}</p>
 
                   {/* Exam rules  */}
-                  <h1 className="text-2xl text-start font-bold my-3">Rules</h1>
-                  <ul className="text-start">
+                  <h2 className="text-2xl text-start font-bold my-3">Rules:</h2>
+                  <ol
+                    className={`${style.orderList} text-start list-disc ml-[10%] pb-5`}
+                  >
                     <li>The exam duration is 2 hours</li>
                     <li>Total number of question is 100</li>
                     <li>
@@ -68,9 +68,14 @@ const IndividualCertification = ({ course }) => {
                       Users scoring 80 marks or more will pass, while those
                       scoring less than 80 will fail.
                     </li>
-                  </ul>
+                  </ol>
 
-                  <button onClick={toggleModal}>Close</button>
+                  <button
+                    className="bg-[#1abc9c] text-white py-[15px] px-[20px] rounded-full"
+                    onClick={toggleModal}
+                  >
+                    Close
+                  </button>
                 </div>
               </div>
             </div>
