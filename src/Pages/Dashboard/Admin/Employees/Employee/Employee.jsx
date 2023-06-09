@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { AiFillDelete } from "react-icons/ai";
-import style from "./Employee.module.css";
 
 const Employee = ({ employee }) => {
   return (
