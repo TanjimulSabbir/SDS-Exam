@@ -20,30 +20,38 @@ const Profile = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    // update password using patch method to update specific admin
-    fetch(`http://localhost:5000/updateAdminPassword?id=${_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.acknowledged) {
-          toast.success("Update password successfully");
+    // check new password is given in the field or not
+    if (password !== data.password) {
+      // update password using patch method to update specific admin
+      fetch(`http://localhost:5000/updateAdminPassword?id=${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.acknowledged) {
+            toast.success("Update password successfully");
 
-          // get previous admin info from the local-storage
-          const adminInfo = JSON.parse(localStorage.getItem("Employee-Info"));
+            // get previous admin info from the local-storage
+            const adminInfo = JSON.parse(localStorage.getItem("Employee-Info"));
 
-          // update the password in the local-storage
-          adminInfo["password"] = data.password;
-          localStorage.setItem("Employee-Info", JSON.stringify(adminInfo));
+            // update the password in the local-storage
+            adminInfo["password"] = data.password;
+            localStorage.setItem("Employee-Info", JSON.stringify(adminInfo));
 
-          // navigate to profile page
-          navigate("/dashboard/profile");
-        }
-      });
+            // navigate to profile page
+            navigate("/dashboard/profile");
+          }
+        })
+        .catch(() => {
+          toast.error("Something went wrong!");
+        });
+    } else {
+      toast.error("New password is not given.");
+    }
   };
   return (
     <div>
