@@ -1,19 +1,49 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../../Context/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import style from "./Profile.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { employeeInfo } = useContext(AuthContext);
-  const { role, name, regId, password } = employeeInfo;
+  const { _id, role, name, regId, password } = employeeInfo;
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
-    const { password } = data;
+    console.log(data);
+
+    // update password using patch method to update specific admin
+    fetch(`http://localhost:5000/updateAdminPassword?id=${_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.acknowledged) {
+          toast.success("Update password successfully");
+
+          // get previous admin info from the local-storage
+          const adminInfo = JSON.parse(localStorage.getItem("Employee-Info"));
+
+          // update the password in the local-storage
+          adminInfo["password"] = data.password;
+          localStorage.setItem("Employee-Info", JSON.stringify(adminInfo));
+
+          // navigate to profile page
+          navigate("/dashboard/profile");
+        }
+      });
   };
   return (
     <div>
