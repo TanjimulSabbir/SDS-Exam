@@ -51,7 +51,12 @@ const DashboardLayout = () => {
           </Link>
         </li>
         <li>
-          <Link>
+          <Link
+            to="/dashboard/employees"
+            className={
+              pathName === "/dashboard/employees" ? `${style.activeMenu}` : ""
+            }
+          >
             <BsFillPeopleFill /> Employees
           </Link>
         </li>

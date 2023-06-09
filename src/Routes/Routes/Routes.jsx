@@ -10,6 +10,7 @@ import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Profile from "../../Pages/Dashboard/Admin/Profile/Profile";
 import AddEmployee from "../../Pages/Dashboard/Admin/AddEmployee/AddEmployee";
+import Employees from "../../Pages/Dashboard/Admin/Employees/Employees/Employees";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddEmployee />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/employees",
+        element: (
+          <PrivateRoute>
+            <Employees />
           </PrivateRoute>
         ),
       },
