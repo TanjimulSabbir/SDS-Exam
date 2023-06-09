@@ -1,11 +1,47 @@
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const AddEmployee = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const navigate = useNavigate();
+
+  const onSubmit = (data) => {
+    fetch("http://localhost:5000/addEmployee", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.acknowledged) {
+          toast.success("You added an employee successfully.");
+          navigate("/dashboard/employees");
+        }
+      })
+      .catch(() => {
+        toast.error("Failed to add an employee.");
+      });
+  };
+
   return (
     <div className="p-10">
       <h1 className="text-3xl text-center mb-10 font-roboto font-bold">
         Add an employee
       </h1>
-      <form>
+
+      {/* form  */}
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
+          {/* name  */}
           <div>
             <label
               htmlFor="name"
@@ -18,9 +54,17 @@ const AddEmployee = () => {
               id="name"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="John"
-              required
+              {...register("name", { required: true })}
+              aria-invalid={errors.name ? "true" : "false"}
             />
+            {errors.name?.type === "required" && (
+              <p role="alert" className="my-1 text-red-600">
+                Name is required
+              </p>
+            )}
           </div>
+
+          {/* designation  */}
           <div>
             <label
               htmlFor="role"
@@ -33,9 +77,12 @@ const AddEmployee = () => {
               id="role"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               defaultValue="employee"
+              {...register("role")}
               readOnly
             />
           </div>
+
+          {/* registration id  */}
           <div>
             <label
               htmlFor="regId"
@@ -48,9 +95,17 @@ const AddEmployee = () => {
               id="regId"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="Enter registration id"
-              required
+              {...register("regId", { required: true })}
+              aria-invalid={errors.regId ? "true" : "false"}
             />
+            {errors.regId?.type === "required" && (
+              <p role="alert" className="my-1 text-red-600">
+                Registration ID is required
+              </p>
+            )}
           </div>
+
+          {/* password  */}
           <div>
             <label
               htmlFor="password"
@@ -63,8 +118,14 @@ const AddEmployee = () => {
               id="password"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="Enter password"
-              required
+              {...register("password", { required: true })}
+              aria-invalid={errors.password ? "true" : "false"}
             />
+            {errors.password?.type === "required" && (
+              <p role="alert" className="my-1 text-red-600">
+                Password is required
+              </p>
+            )}
           </div>
         </div>
 
