@@ -14,9 +14,7 @@ const Certifications = () => {
           alt="trophy image"
           className="w-[90px] h-[90px] object-contain"
         />
-        <h1 className="text-4xl uppercase font-bold font-roboto">
-          examination
-        </h1>
+        <h1 className="text-4xl uppercase font-bold font-roboto">quiz</h1>
       </div>
 
       {/* animation  */}

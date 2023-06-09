@@ -11,6 +11,7 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import Profile from "../../Pages/Dashboard/Admin/Profile/Profile";
 import AddEmployee from "../../Pages/Dashboard/Admin/AddEmployee/AddEmployee";
 import Employees from "../../Pages/Dashboard/Admin/Employees/Employees/Employees";
+import About from "../../Pages/About/About";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/certifications",
         element: <Certification />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
     ],
   },
