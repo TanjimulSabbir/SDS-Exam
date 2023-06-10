@@ -5,13 +5,14 @@ const Certification = () => {
   const [courses, setCourses] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/certifications")
+    fetch("https://quiz-five-beta.vercel.app/certifications")
       .then((res) => res.json())
       .then((data) => setCourses(data))
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
   return (
     <div className="py-10 px-[6%]">
       <div className="text-center">

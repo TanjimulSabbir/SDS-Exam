@@ -7,7 +7,6 @@ import style from "./individualCertification.module.css";
 
 const IndividualCertification = ({ course }) => {
   const { courseId, courseName, courseImg, courseDesc } = course;
-
   const [ruleModalOpen, setRuleModalOpen] = useState(false);
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
 
@@ -105,7 +104,7 @@ const IndividualCertification = ({ course }) => {
 
         <div className="card-actions justify-end">
           {/* modal of confirmation  */}
-          <button
+          <button 
             className="btn bg-[#42B2BE] font-roboto text-white rounded-full"
             onClick={toggleConfirmationModal}
           >
@@ -151,10 +150,10 @@ const IndividualCertification = ({ course }) => {
                       Cancel
                     </button>
                     <Link
-                      to="#"
+                      to={`/certifications/${courseName}/exam`}
                       className="bg-[#2ecc71] text-white py-[15px] px-[20px] font-roboto rounded-full"
                     >
-                      Proceed
+                     Start Exam
                     </Link>
                   </div>
                 </div>
