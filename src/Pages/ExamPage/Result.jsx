@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import getExamData from "../../CustomHook/useExamData";
 import Loading from "../../Common/Css/Loader/Loading";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 
 const Result = () => {
@@ -10,25 +10,10 @@ const Result = () => {
 	const [ExamData] = getExamData(PathCourseName);
 	// const [Result, setResult] = useState(null);
 
-	let CorrectAnswer = 0;
-	let WrongAnswer = 0;
-	useEffect(() => {
-		// fetch(`https://quiz-five-beta.vercel.app/certifications/${PathCourseName}`)
-		// 	.then((res) => res.json())
-		// 	.then((data) => )
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	});
-		console.log((CorrectAnswer - WrongAnswer))
-
-	}, [CorrectAnswer, WrongAnswer]);
-
 	if (!ExamData) {
 		return <Loading></Loading>
 	}
-
 	const GetLocalExamResult = JSON.parse(localStorage.getItem("ExamResult"));
-
 	const MatchedResultData = GetLocalExamResult.find(result => result.Title === PathCourseName);
 
 	const userAnswersArray = Object.entries(MatchedResultData.userAnswers).map(([key, value]) => ({
@@ -36,23 +21,21 @@ const Result = () => {
 		SubmitAnswer: value
 	}));
 
-
-	console.log(userAnswersArray);
+	const AnswerArray = ExamData.questionPaper.map(questions => ({ questionNo: questions.questionNo, answer: questions.answer }));
 
 	const IntigratedArray = ExamData.questionPaper.map((question) => {
-		const MatchedResult = userAnswersArray.find((obj) => obj.SubmitQNo == question.questionNo);
-
+		const MatchedResult = userAnswersArray.find((obj) => { return obj.SubmitQNo == question.questionNo });
 		if (MatchedResult) {
 			return { ...question, Submitted: { ...MatchedResult } }
 		}
 		return question;
 	});
 
-
 	const formattedExamDate = new Date(MatchedResultData.ExamDate).toLocaleString().split(',')[0];
-	console.log(CorrectAnswer, WrongAnswer, "CorrectAnswer+WrongAnswer")
 
-
+	let CorrectAnswer = 0;
+	let WrongAnswer = 0;
+	
 	return (
 		<div className="px-4 sm:px-6 md:px-10 max-w-5xl mx-auto" style={{ fontFamily: "Roboto Slab, serif" }}>
 			{/* Exam Title */}
@@ -63,20 +46,9 @@ const Result = () => {
 			{
 				IntigratedArray.map(Question => {
 					const { questionNo, question, options, answer, Submitted: { SubmitQNo, SubmitAnswer } = {} } = Question;
-
-					// if (SubmitQNo) {
-					// 	if (SubmitAnswer === answer) {
-					// 		CorrectAnswer = CorrectAnswer + 1
-					// 	} else {
-					// 		WrongAnswer = WrongAnswer + 1
-					// 	}
-					// }
+					// Total Mark Calculation
 					CorrectAnswer += (SubmitQNo && SubmitAnswer === answer) ? 1 : 0;
 					WrongAnswer += (SubmitQNo && SubmitAnswer !== answer) ? 1 : 0;
-
-
-					console.log(CorrectAnswer - WrongAnswer, "Inside");
-
 					return (
 						<div key={questionNo} className="mt-24" id={questionNo}>
 							<div className="my-10 bg-gray-100 shadow-xl px-10 py-5 rounded-lg">

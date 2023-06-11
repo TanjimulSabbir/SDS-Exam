@@ -11,7 +11,7 @@ import Loading from "../../Common/Css/Loader/Loading";
 const ExamPage = () => {
 	const [userAnswers, setUserAnswers] = useState({});
 	const [OptionStyle, setOptionStyle] = useState(null);
-	const [timeRemaining, setTimeRemaining] = useState(500); // 2 hours
+	const [timeRemaining, setTimeRemaining] = useState(300); // 2 hours
 	const [isTimeUp, setIsTimeUp] = useState(false);
 
 	const Params = useParams();
@@ -20,59 +20,56 @@ const ExamPage = () => {
 	const [ExamData] = getExamData(PathCourseName);
 
 	const navigate = useNavigate();
-	const Title = ExamData?.courseName;
-
-	// You are Out of Exam For Screen Minimize
-	// useEffect(() => {
-	// 	const handleVisibilityChange = async () => {
-	// 		if (document.visibilityState === 'hidden') {
-	// 			// User minimized the window
-	// 			Swal.fire({
-	// 				allowOutsideClick: false,
-	// 				allowEscapeKey: false,
-	// 				title: 'You are out of Exam',
-	// 				text: "You have minimized your tab. Now, You won't be able to back on exam page! ",
-	// 				icon: 'error',
-	// 				showCancelButton: false,
-	// 				confirmButtonColor: '#3085d6',
-	// 				confirmButtonText: 'Submit'
-	// 			}).then((result) => {
-	// 				if (result.isConfirmed) {
-	// 					AddResultToLocal();
-	// 					Swal.fire({
-	// 						icon: 'success',
-	// 						title: 'Your work has been saved',
-	// 						showConfirmButton: false,
-	// 						html: `
-	// 						<a href="/certifications/${Title}/result" target="_blank" style='display: inline-block;
-	// 									padding: 10px 20px;
-	// 									background-color: #007bff;
-	// 									color: #fff;
-	// 									text-decoration: none;
-	// 									border-radius: 4px;
-	// 									box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	// 									transition: background-color 0.3s;
-	// 									font-size: 16px;
-	// 									font-weight: bold;'> Show Result
-	// 						</a>
-	// 					  `,
-	// 					})
-	// 					navigate('/certifications');
-	// 				}
-	// 			}).then(()=>{
-	// 				Swal.fire({
-	// 					timer:1500
-	// 				})
-	// 			})
-	// 		}
-	// 	};
-
-	// 	window.addEventListener('visibilitychange', handleVisibilityChange);
 	
-	// 	return () => {
-	// 		window.removeEventListener('visibilitychange', handleVisibilityChange);
-	// 	};
-	// }, []);
+	const Title = ExamData?.courseName;
+	
+	// You are Out of Exam For Screen Minimize
+	useEffect(() => {
+		const handleVisibilityChange = async () => {
+			if (document.visibilityState === 'hidden') {
+				// User minimized the window
+				Swal.fire({
+					allowOutsideClick: false,
+					allowEscapeKey: false,
+					title: 'You are out of Exam',
+					text: "Screen minimized, now you are outside of the exam page. Fear not! Discover your previous marked answers, hidden treasures of progress",
+					icon: 'error',
+					showCancelButton: false,
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'Submit'
+				}).then((result) => {
+					AddResultToLocal()
+					if (result.isConfirmed) {
+						Swal.fire({
+							icon: 'success',
+							title: 'Your work has been saved',
+							showConfirmButton: false,
+							html: `
+							<a href="/certifications/${PathCourseName}/result" target="_blank" style='display: inline-block;
+										padding: 10px 20px;
+										background-color: #007bff;
+										color: #fff;
+										text-decoration: none;
+										border-radius: 4px;
+										box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+										transition: background-color 0.3s;
+										font-size: 16px;
+										font-weight: bold;'> Show Result
+							</a>
+						  `,
+						})
+						navigate('/certifications');
+					}
+				})
+			}
+		};
+
+		window.addEventListener('visibilitychange', handleVisibilityChange);
+	
+		return () => {
+			window.removeEventListener('visibilitychange', handleVisibilityChange);
+		};
+	}, []);
 
 	
 	const handleAnswerChange = (questionId, selectedOption, option) => {
@@ -90,6 +87,8 @@ const ExamPage = () => {
 			title: 'Are you want to Submit?',
 			text: "You won't be able to back on exam page!",
 			icon: 'info',
+			allowOutsideClick: false,
+			allowEscapeKey: false,
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
@@ -98,14 +97,14 @@ const ExamPage = () => {
 			if (result.isConfirmed) {
 				AddResultToLocal()
 				Swal.fire({
-					allowOutsideClick: false,
-					allowEscapeKey: false,
+					allowOutsideClick: true,
+					allowEscapeKey: true,
 					showCancelButton: false,
 					showConfirmButton: false,
 					icon: 'success',
 					title: 'Answer Submitted!',
 					html: `
-					<a href="/certifications/${Title}/result" target="_blank" style='display: inline-block;
+					<a href="/certifications/${PathCourseName}/result" target="_blank" style='display: inline-block;
 								padding: 10px 20px;
 								background-color: #007bff;
 								color: #fff;
@@ -121,11 +120,6 @@ const ExamPage = () => {
 				}
 			}
 		)
-	
-
-		// .then((result) => {
-			
-		// })
 	};
 	const AddResultToLocal = () => {
 		// Add Employee Answer to Local Storage
@@ -151,6 +145,7 @@ const ExamPage = () => {
 			ParseGetItemData.push(data);
 		}
 		localStorage.setItem("ExamResult", JSON.stringify(ParseGetItemData));
+		
 	}
 
 	// Time Duration Setting
@@ -244,6 +239,8 @@ const ExamPage = () => {
 		title: 'Exam Time Over!',
 		text: "Please, Submit Your Answer!",
 		icon: 'success',
+		allowOutsideClick: false,
+		allowEscapeKey: false,
 		showCancelButton: false,
 		confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
@@ -252,26 +249,26 @@ const ExamPage = () => {
 		if (result.isConfirmed) {
 			AddResultToLocal()
 			Swal.fire({
-				allowOutsideClick: false,
-				allowEscapeKey: false,
+				allowOutsideClick: true,
+				allowEscapeKey: true,
 				showCancelButton: false,
 				showConfirmButton: false,
 				icon: 'success',
 				title: 'Your work has been saved',
 				html: `
-				<a href="/certifications/${Title}/result" target="_blank" style='display: inline-block;
-							padding: 10px 20px;
-							background-color: #007bff;
-							color: #fff;
-							text-decoration: none;
-							border-radius: 4px;
-							box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-							transition: background-color 0.3s;
-							font-size: 16px;
-							font-weight: bold;'> Show Result
-				</a>
-			  `,
+					<a href="/certifications/${PathCourseName}/result" target="_blank" style='display: inline-block;
+								padding: 10px 20px;
+								background-color: #007bff;
+								color: #fff;
+								text-decoration: none;
+								border-radius: 4px;
+								box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+								transition: background-color 0.3s;
+								font-size: 16px;
+								font-weight: bold;'> Show Result
+					</a>`,
 			});
+			navigate("/certifications");
 		}
 	})
 }
