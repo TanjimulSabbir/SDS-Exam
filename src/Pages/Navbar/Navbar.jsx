@@ -23,15 +23,16 @@ const Navbar = () => {
   console.log(pathName);
 
   // refresh
-  navigate(0);
+  // navigate(0);
 
   const { employeeInfo, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut();
     // refresh
-    navigate(0);
+    // navigate(0);
   };
+
 
   return (
     <>

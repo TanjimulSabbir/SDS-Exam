@@ -13,6 +13,7 @@ import AddEmployee from "../../Pages/Dashboard/Admin/AddEmployee/AddEmployee";
 import Employees from "../../Pages/Dashboard/Admin/Employees/Employees/Employees";
 import About from "../../Pages/About/About";
 import ExamPage from "../../Pages/ExamPage/ExamPage";
+import Result from "../../Pages/ExamPage/Result";
 
 export const router = createBrowserRouter([
   {
@@ -39,8 +40,12 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/certifications/:courseName/:exam",
+    path: "/certifications/:courseName/exam",
     element: <ExamPage />,
+  },
+  {
+    path: "/certifications/:courseName/result",
+    element: <Result />,
   },
   {
     path: "/dashboard",
